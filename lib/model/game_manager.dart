@@ -1,19 +1,10 @@
 import 'package:game_hub/model/game.dart';
+import 'package:game_hub/model/player.dart';
 
 class GameManager<T extends Game> {
-  static final Map<Type, GameManager> _managers = {};
+  final Player player;
+  final T game;
+  Map<String, dynamic>? state;
 
-  static GameManager getInstance<T extends Game>() {
-    if (_managers[T] == null) {
-      _managers[T] = GameManager<T>();
-    }
-    return _managers[T]!;
-  }
-
-  String getName() {
-    if (T is! Game) {
-      throw Exception("Type '$T' does not extend Game");
-    }
-    return T.name;
-  }
+  GameManager({required this.player, required this.game});
 }

@@ -1,9 +1,13 @@
-import 'package:game_hub/model/player.dart';
-
 abstract class Game {
   static String name = "Game";
-  int currentPlayer = 0;
+  static int minPlayers = 0;
+  static int maxPlayers = 0;
+  String get gameName {
+    return Game.name;
+  }
 
-  late List<Player> Function() getPlayers;
-  late bool Function() hasRequiredPlayers;
+  bool checkWin(Map<String, dynamic> state);
+  bool checkDraw(Map<String, dynamic> state);
+  Map<String, dynamic> processMove(Map<String, dynamic> state);
+  bool validateState(Map<String, dynamic> state);
 }
